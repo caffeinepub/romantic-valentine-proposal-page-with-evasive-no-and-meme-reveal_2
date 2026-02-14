@@ -1,0 +1,70 @@
+{
+  "kind": "build_request",
+  "title": "Restore 'Good Choice' meme reveal on Yes click",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "text": "Update the post-\"Yes\" (answered) view so that it shows a single meme image with the text \"Good Choice\" (instead of showing the Bible verse image and the \"Marry me\" image).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-9"
+        ],
+        "quotes": [
+          "when she clicks yes , show her a meme image telling her \" Good Choice\""
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking the \"Yes\" button transitions the UI to an answered state.",
+        "The answered state renders exactly one image: the \"Good Choice\" meme.",
+        "The answered state no longer renders the two images currently shown (Bible verse and \"Marry me\").",
+        "All user-facing text remains in English."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Add the \"Good Choice\" meme image as a static frontend asset under the generated assets path and render it directly from the frontend (no backend involvement).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-9"
+        ],
+        "quotes": [
+          "show her a meme image telling her \" Good Choice\""
+        ]
+      },
+      "acceptanceCriteria": [
+        "A single image file for the \"Good Choice\" meme exists under the frontend public generated assets directory.",
+        "The answered state references the static asset via an absolute public path (e.g., \"/assets/generated/...png\").",
+        "No backend code is added or used to serve the image."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui.",
+    "Keep backend as a single Motoko actor; do not add backend logic for this change.",
+    "Store and serve images as static frontend assets; do not route images through the backend."
+  ],
+  "nonGoals": [
+    "Do not add authentication or Internet Identity flows.",
+    "Do not add additional choices beyond \"Yes\" and \"No\".",
+    "Do not add new pages, routing, or multi-step flows beyond the existing single-screen interaction and the answered reveal."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Meme-style image with bold, high-contrast caption text that reads \"Good Choice\" on a romantic/pink-friendly palette (valentine-good-choice-meme.dim_1200x800.png)"
+    ],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

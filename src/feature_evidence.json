@@ -1,0 +1,39 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-the-post-yes-answered-view-so-that-it-shows-a-single-meme-image-with-the-text-good-choice-instead-of-showing-the-bible-verse-image-and-the-marry-me-image",
+      "featureTitle": "Update the post-\"Yes\" (answered) view so that it shows a single meme image with the text \"Good Choice\" (instead of showing the Bible verse image and the \"Marry me\" image).",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-the-good-choice-meme-image-as-a-static-frontend-asset-under-the-generated-assets-path-and-render-it-directly-from-the-frontend-no-backend-involvement",
+      "featureTitle": "Add the \"Good Choice\" meme image as a static frontend asset under the generated assets path and render it directly from the frontend (no backend involvement).",
+      "files": [],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

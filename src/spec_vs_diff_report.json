@@ -1,0 +1,40 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-14T01:07:36.339Z",
+  "summary": "REQ-8 is implemented in the UI: clicking \"Yes\" transitions to an answered state that renders a single \"Good Choice\" meme image via an absolute /assets/generated/... path, replacing the prior two-image reveal. However, REQ-9 is only partially met: the code references the new static asset, but the diff shows no added image file under the public generated assets directory.",
+  "missing_requirements": [
+    {
+      "id": "REQ-9",
+      "requirement": "Add the \"Good Choice\" meme image as a static frontend asset under the generated assets path.",
+      "reason": "The UI references \"/assets/generated/valentine-good-choice-meme.dim_1200x800.png\", but the diff indicates no files were added (Added: 0). There is no evidence the actual image file was added under the frontend public generated assets directory.",
+      "evidence": [
+        "<file-diff>: Added: 0",
+        "frontend/src/App.tsx (references /assets/generated/valentine-good-choice-meme.dim_1200x800.png)"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Added/updated a romantic theme system (global CSS OKLCH palette, custom animations, Tailwind theme tokens/fonts) beyond the requested change to the answered view/image swap.",
+      "reason": "BuildRequest only asks to restore the single \"Good Choice\" meme on Yes and add it as a static asset; it does not request theme/CSS/Tailwind changes.",
+      "evidence": [
+        "frontend-file-summaries.txt (frontend/src/index.css)",
+        "frontend-file-summaries.txt (frontend/tailwind.config.js)"
+      ]
+    },
+    {
+      "description": "Added a footer promoting caffeine.ai with a dynamic hostname-based UTM link.",
+      "reason": "The BuildRequest does not request adding a footer, external promotional link, or attribution block.",
+      "evidence": [
+        "frontend/src/App.tsx (footer with caffeine.ai link)"
+      ]
+    }
+  ],
+  "confidence": 0.74,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/App.tsx",
+    "project_state.json"
+  ]
+}

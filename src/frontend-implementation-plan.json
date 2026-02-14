@@ -1,0 +1,40 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Restore answered-state 'Good Choice' meme reveal",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "summary": "Replace the answered (post-\"Yes\") view with a single \"Good Choice\" meme image and remove the two existing images.",
+      "acceptanceCriteria": [
+        "Clicking the \"Yes\" button transitions the UI to an answered state.",
+        "The answered state renders exactly one image: the \"Good Choice\" meme.",
+        "The answered state no longer renders the two images currently shown (Bible verse and \"Marry me\").",
+        "All user-facing text remains in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update the answered-state render branch to display exactly one <img> using src \"/assets/generated/valentine-good-choice-meme.dim_1200x800.png\" and remove the two existing answered-state images (Bible verse + \"Marry me\"); ensure the answered state still triggers on the existing Yes button click and that any remaining user-facing text is English-only."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Add the \"Good Choice\" meme image as a static public asset and reference it directly from the answered state.",
+      "acceptanceCriteria": [
+        "A single image file for the \"Good Choice\" meme exists under the frontend public generated assets directory.",
+        "The answered state references the static asset via an absolute public path (e.g., \"/assets/generated/...png\").",
+        "No backend code is added or used to serve the image."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/valentine-good-choice-meme.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add the provided generated image file to the public generated assets directory so it can be served statically by the frontend build (no backend involvement)."
+        }
+      ]
+    }
+  ]
+}
